@@ -4,15 +4,15 @@ import app from '../firebase'
 import { BsChevronRight } from 'react-icons/bs'
 //import { FaRepublican, FaDemocrat } from 'react-icons/fa'
 
-function Polis() {
-    const [politicians, setPolis] = useState([]);
+function Queens() {
+    const [queens, setPolis] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const ref = app.firestore().collection("politicians");
+    const ref = app.firestore().collection("queens");
    
     function getPolis() {
         setLoading(true);
@@ -45,7 +45,7 @@ function Polis() {
 */
     return (
         <div min-width= {100}>
-            <h1>Nassau County Politicians</h1>
+            <h1>Queens County Politicians</h1>
             <Card>
                 <Card.Title>
                     <Form
@@ -56,7 +56,7 @@ function Polis() {
                 </Card.Title>
             </Card>
             <Row xs={2} md={5} lg={8}>
-                {politicians.map((politician) => (
+                {queens.map((politician) => (
                     <Col>
                         <Card 
                             style={{ width: '15rem' }}
@@ -100,4 +100,4 @@ function Polis() {
     );
 }
 
-export default Polis;
+export default Queens;
