@@ -1,7 +1,6 @@
 import React from 'react'
 import * as ReactBootStrap from 'react-bootstrap'
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import Dashboard from './Dashboard'
 import About from './About';
 import Home from './Home';
 import Polis from './Polis';
@@ -25,14 +24,12 @@ export default function NavbarElements() {
                     <ReactBootStrap.Navbar.Collapse id="responsive-navbar-nav">
                         <ReactBootStrap.Nav className="me-auto">
                             <ReactBootStrap.Nav.Link as={Link} to={'/home'}><FaHome></FaHome> Home</ReactBootStrap.Nav.Link>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/polis'}><HiUserGroup></HiUserGroup> Candidates</ReactBootStrap.Nav.Link>
                             <NavDropdown title="Candidates" id="collasible-nav-dropdown">
                                 <NavDropdown.Item><ReactBootStrap.Nav.Link as={Link} to={'/polis'}>Nassau</ReactBootStrap.Nav.Link></NavDropdown.Item>
                                 <NavDropdown.Item><ReactBootStrap.Nav.Link as={Link} to={'/suffolk'}>Suffolk</ReactBootStrap.Nav.Link></NavDropdown.Item>
                                 <NavDropdown.Item><ReactBootStrap.Nav.Link as={Link} to={'/queens'}>Queens</ReactBootStrap.Nav.Link></NavDropdown.Item>
                                 <NavDropdown.Item><ReactBootStrap.Nav.Link as={Link} to={'/bronx'}>Bronx</ReactBootStrap.Nav.Link></NavDropdown.Item>
                             </NavDropdown>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/dashboard'}><MdPerson></MdPerson> Profile</ReactBootStrap.Nav.Link>
                             <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>

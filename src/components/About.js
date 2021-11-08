@@ -35,7 +35,7 @@ export default class About extends Component {
               </p>
               <h2>Questions? Email:<br></br> <a href = "mailto: ckelly42@pride.hofstra.edu">ckelly42@pride.hofstra.edu</a>
               <Spacer height='20px' />
-              <a href = "mailto: bclampett1@pride.hofstra.edu">blcampett1@pride.hofstra.edu</a>
+              <a href = "mailto: bclampett1@pride.hofstra.edu">bclampett1@pride.hofstra.edu</a>
               </h2>
             </div>
               )
