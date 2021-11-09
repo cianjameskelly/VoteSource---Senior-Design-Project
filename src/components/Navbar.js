@@ -12,6 +12,8 @@ import { MdPerson } from 'react-icons/md'
 import { HiUserGroup } from 'react-icons/hi'
 import { BsFillQuestionSquareFill } from 'react-icons/bs'
 import { NavDropdown } from 'react-bootstrap';
+import Login from './Login'
+import Registration from './Registration'
 
 export default function NavbarElements() {
     return (
@@ -31,6 +33,8 @@ export default function NavbarElements() {
                                 <NavDropdown.Item><ReactBootStrap.Nav.Link as={Link} to={'/bronx'}>Bronx</ReactBootStrap.Nav.Link></NavDropdown.Item>
                             </NavDropdown>
                             <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>
+                            <ReactBootStrap.Nav.Link as={Link} to={'/registration'}> Registration</ReactBootStrap.Nav.Link>
+                            <ReactBootStrap.Nav.Link as={Link} to={'/login'}> Login</ReactBootStrap.Nav.Link>
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
                 </ReactBootStrap.Container>
@@ -55,6 +59,12 @@ export default function NavbarElements() {
                 </Route>
                 <Route path="/bronx">
                     <Bronx />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
+                <Route path="/registration">
+                    <Registration />
                 </Route>
             </Switch>
         </div>

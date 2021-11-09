@@ -3,11 +3,16 @@ import { Button, Card, Col, Form, FormLabel, Modal, Row } from 'react-bootstrap'
 import app from '../firebase'
 import { BsChevronRight } from 'react-icons/bs'
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from 'uuid';
 //import { FaRepublican, FaDemocrat } from 'react-icons/fa'
 
 function Polis() {
     const [politicians, setPolis] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [name, setName] = useState("");
+    const [party, setParty] = useState("");
+    const [position, setPosition] = useState("");
+    const [img, setImg] = useState("")
 
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -31,6 +36,15 @@ function Polis() {
         getPolis();
     }, []);
 
+    function addPoli(newPoli) {
+        ref
+            .doc(newPoli.id)
+            .set(newPoli)
+            .catch((err) => {
+                console.error(err);
+            })
+    }
+
     if (loading) {
         return <h1>Loading...</h1>;
     }
@@ -47,15 +61,16 @@ function Polis() {
     return (
         <div min-width= {100}>
             <h1>Nassau County Politicians</h1>
-            <Card>
-                <Card.Title>
-                    <Form
-                        
-                    >
-                        <FormLabel>Search</FormLabel>
-                    </Form>
-                </Card.Title>
-            </Card>
+            <div className="inputPoli">
+                <h4>Are you running? Add your information to VoteSource below!</h4>
+                <input type='text' onChange={(e) => setName(e.target.value)} />
+                <input type='text' onChange={(e) => setParty(e.target.value)} />
+                <input type='text' onChange={(e) => setPosition(e.target.value)} />
+                <input type='file' onChange={(e) => setImg(e.target.value)} />
+                <button onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>
+                    Submit
+                </button>
+            </div>
             <Row xs={2} md={5} lg={8}>
                 {politicians.map((politician) => (
                     <Col>
