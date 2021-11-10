@@ -45,7 +45,7 @@ function Bronx() {
 */
     return (
         <div min-width= {100}>
-            <h1>Nassau County Politicians</h1>
+            <h1>Bronx Candidates</h1>
             <Card>
                 <Card.Title>
                     <Form

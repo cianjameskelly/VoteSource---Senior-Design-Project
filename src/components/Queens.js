@@ -45,7 +45,7 @@ function Queens() {
 */
     return (
         <div min-width= {100}>
-            <h1>Queens County Politicians</h1>
+            <h1>Queens Candidates</h1>
             <Card>
                 <Card.Title>
                     <Form

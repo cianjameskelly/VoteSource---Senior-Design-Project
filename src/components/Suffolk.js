@@ -45,7 +45,7 @@ function Suffolk() {
 */
     return (
         <div min-width= {100}>
-            <h1>Suffolk County Politicians</h1>
+            <h1>Suffolk County Candidates</h1>
             <Card>
                 <Card.Title>
                     <Form

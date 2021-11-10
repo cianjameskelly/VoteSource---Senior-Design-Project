@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import './Home.css'
 import PersonIcon from '@material-ui/icons/Person';
@@ -78,8 +78,7 @@ function Home() {
             </Typography>
             </div>
             <div className={`${classes.grid} ${classes.littleSpace}`}>  
-            <Grid icon={<PersonIcon style={{fill: "#5EA780", height:"125", width:"125"}}/>}  title="Voter" btnTitle="Register"/>
-            <Grid icon={<PersonIcon style={{fill: "#E69426", height:"125", width:"125"}}/>}  title="Candidate" btnTitle="Register"/>
+            <Grid icon={<PersonIcon style={{fill: "#5EA780", height:"125", width:"125"}}/>}  title="Register" btnTitle="Register"/>
             </div>
         </ThemeProvider>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Form, FormLabel, Modal, Row } from 'react-bootstrap';
+import { Button, Card, Col,Row } from 'react-bootstrap';
 import app from '../firebase'
 import { BsChevronRight } from 'react-icons/bs'
 import { Link } from "react-router-dom";
@@ -60,13 +60,13 @@ function Polis() {
 */
     return (
         <div min-width= {100}>
-            <h1>Nassau County Politicians</h1>
+            <h1>Nassau County Candidates</h1>
             <div className="inputPoli">
                 <h4>Are you running? Add your information to VoteSource below!</h4>
-                <input type='text' onChange={(e) => setName(e.target.value)} />
-                <input type='text' onChange={(e) => setParty(e.target.value)} />
-                <input type='text' onChange={(e) => setPosition(e.target.value)} />
-                <input type='file' onChange={(e) => setImg(e.target.value)} />
+                <h6>Name</h6><input type='text' onChange={(e) => setName(e.target.value)} />
+                <h6>Position</h6><input type='text' onChange={(e) => setParty(e.target.value)} />
+                <h6>Party</h6><input type='text' onChange={(e) => setPosition(e.target.value)} />
+                <h6>Profile Photo</h6><input type='file' onChange={(e) => setImg(e.target.value)} />
                 <button onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>
                     Submit
                 </button>
