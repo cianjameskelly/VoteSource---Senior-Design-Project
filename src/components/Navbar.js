@@ -14,6 +14,7 @@ import Login from './Login'
 import Register from './Signup'
 import PoliProfile from './PoliProfile'
 import Signup from './Signup';
+import RegSignup from './RegSignup';
 
 export default function NavbarElements() {
     return (
@@ -32,7 +33,8 @@ export default function NavbarElements() {
                                 <NavDropdown.Item><Link as={Link} to={'/queens'}>Queens</Link></NavDropdown.Item>
                                 <NavDropdown.Item><Link as={Link} to={'/bronx'}>Bronx</Link></NavDropdown.Item>
                             </NavDropdown>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>                       
+                            <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>
+                            <ReactBootStrap.Nav.Link as={Link} to={'/regsignup'}> Sign Up</ReactBootStrap.Nav.Link>       
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
                 </ReactBootStrap.Container>
@@ -63,6 +65,9 @@ export default function NavbarElements() {
                 </Route>
                 <Route path="/signup">
                     <Signup />
+                </Route>
+                <Route path="/regsignup">
+                    <RegSignup />
                 </Route>
                 <Route path="/poliprofile">
                     <PoliProfile />

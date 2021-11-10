@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Form, Button, Card, Container } from 'react-bootstrap'
+import { Form, Button, Card, Container, Alert } from 'react-bootstrap'
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import app from '../firebase'
@@ -8,13 +8,35 @@ import { v4 as uuidv4 } from 'uuid';
 export default function Signup() {    
     const emailRef = useRef()
     const passwordRef = useRef()
-    
-    const [politicians, setPolis] = useState([]);
+    const passwordConfirmRef = useRef()
+    const { signup } = useAuth()
+    const [error, setError] = useState("")
+    const history = useHistory()
+
     const [loading, setLoading] = useState(false);
     const [name, setName] = useState("");
     const [party, setParty] = useState("");
     const [position, setPosition] = useState("");
     const [img, setImg] = useState("")
+
+    async function handleSubmit(e) {
+        e.preventDefault()
+
+        if (passwordRef.current.value !== passwordConfirmRef.current.value) {
+            return setError("Passwords do not match")
+        }
+    
+        try {
+          setError("")
+          setLoading(true)
+          await signup(emailRef.current.value, passwordRef.current.value)
+          history.push("/")
+        } catch {
+          setError("Failed to create an account")
+        }
+    
+        setLoading(false)
+    }
 
     const ref = app.firestore().collection("politicians");
 
@@ -40,17 +62,19 @@ export default function Signup() {
                     <Card.Body>
                         <h2 className="text-center mb-4">Register as a Politician!</h2>
                         <h6>Input your information below to be displayed in the VoteSource Politician Database!</h6>
-                        <Form>
+                        <Form onSubmit={handleSubmit}>
                             <Form.Group id="email">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control type="email" ref={emailRef} required />
                             </Form.Group>
-                        </Form>
-                        <Form>
                             <Form.Group id="password">
                                 <Form.Label>Password</Form.Label>
                                 <Form.Control type="password" ref={passwordRef} required />
                             </Form.Group>
+                            <Form.Group id="password-confirm">
+                                <Form.Label>Password Confirmation</Form.Label>
+                                <Form.Control type="password" ref={passwordConfirmRef} required />
+                                </Form.Group>
                         </Form>
                         <Form>
                             <Form.Group>
@@ -77,7 +101,7 @@ export default function Signup() {
                             </Form.Group>
                         </Form>
                         <Link to="/polis">
-                            <Button type="submit" onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>Sign Up</Button>
+                            <Button diabled={loading} type="submit" onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>Sign Up</Button>
                         </Link>
                     </Card.Body>
                 </Card>
