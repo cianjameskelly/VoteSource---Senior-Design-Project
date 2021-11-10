@@ -4,6 +4,9 @@ import './Home.css'
 import PersonIcon from '@material-ui/icons/Person';
 import {Typography} from '@material-ui/core'; 
 import Grid from './Grid'
+import { BsChevronRight } from 'react-icons/bs';
+import { Button } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 const theme = createMuiTheme({
     palette: {
@@ -74,12 +77,16 @@ function Home() {
                 voters using the application to be informed about you!
             </Typography>
             <Typography variant="h4" className={classes.bigSpace} color="primary">
-                Register below!
+                Register as politician below!
             </Typography>
             </div>
-            <div className={`${classes.grid} ${classes.littleSpace}`}>  
-            <Grid icon={<PersonIcon style={{fill: "#5EA780", height:"125", width:"125"}}/>}  title="Register" btnTitle="Register"/>
-            </div>
+            <Link to='./signup'>
+              <Button
+                variant='primary'
+              >
+                  <BsChevronRight></BsChevronRight>
+              </Button>
+            </Link>
         </ThemeProvider>
         </div>
     );

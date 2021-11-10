@@ -8,14 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 function Polis() {
     const [politicians, setPolis] = useState([]);
+    const [allPoliticians, setAllPolis] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [name, setName] = useState("");
-    const [party, setParty] = useState("");
-    const [position, setPosition] = useState("");
-    const [img, setImg] = useState("")
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const ref = app.firestore().collection("politicians");
@@ -28,22 +24,16 @@ function Polis() {
                 items.push(doc.data());
             });
             setPolis(items);
+            setAllPolis(items);
             setLoading(false);
         });
     }
 
     useEffect(() => {
         getPolis();
+        setPolis();
+        setAllPolis();
     }, []);
-
-    function addPoli(newPoli) {
-        ref
-            .doc(newPoli.id)
-            .set(newPoli)
-            .catch((err) => {
-                console.error(err);
-            })
-    }
 
     if (loading) {
         return <h1>Loading...</h1>;
@@ -58,47 +48,46 @@ function Polis() {
       }
     }
 */
+    const filterCards = event => {
+        const value = event.target.value.toLowerCase();
+        const filteredPolis = allPoliticians.filter(politician => (`${politician.name} ${politician.position} ${politician.party}`.toLowerCase().includes(value)));
+        setPolis(filteredPolis);
+    }
+
     return (
-        <div min-width= {100}>
+        <div className="Polis">
             <h1>Nassau County Candidates</h1>
-            <div className="inputPoli">
-                <h4>Are you running? Add your information to VoteSource below!</h4>
-                <h6>Name</h6><input type='text' onChange={(e) => setName(e.target.value)} />
-                <h6>Position</h6><input type='text' onChange={(e) => setParty(e.target.value)} />
-                <h6>Party</h6><input type='text' onChange={(e) => setPosition(e.target.value)} />
-                <h6>Profile Photo</h6><input type='file' onChange={(e) => setImg(e.target.value)} />
-                <button onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>
-                    Submit
-                </button>
+            <input className="search-box" placeholder="Search" onInput={filterCards}/>
+            <div min-width= {100}>
+                <Row xs={2} md={5} lg={8}>
+                    {politicians.map((politician) => (
+                        <Col>
+                            <Card 
+                                style={{ width: '15rem' }}
+                                key={politician.id}
+                                >
+                                <Card.Img src={politician.img} />
+                                <Card.Body>
+                                    <Card.Title>{politician.name}</Card.Title>
+                                    <Card.Text>
+                                        <h6>{politician.position}</h6>
+                                        <h6>{politician.party}</h6>
+                                        {/*<h6>{this.party_icon(politician.party)}</h6>*/}
+                                        <Link to="/poliprofile">
+                                            <Button
+                                                variant='primary'
+                                                onClick={handleShow}
+                                            >
+                                                <BsChevronRight></BsChevronRight>
+                                            </Button>
+                                        </Link>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
             </div>
-            <Row xs={2} md={5} lg={8}>
-                {politicians.map((politician) => (
-                    <Col>
-                        <Card 
-                            style={{ width: '15rem' }}
-                            key={politician.id}
-                            >
-                            <Card.Img src={politician.img} />
-                            <Card.Body>
-                                <Card.Title>{politician.name}</Card.Title>
-                                <Card.Text>
-                                    <h6>{politician.position}</h6>
-                                    <h6>{politician.party}</h6>
-                                    {/*<h6>{this.party_icon(politician.party)}</h6>*/}
-                                    <Link to="/poliprofile">
-                                        <Button
-                                            variant='primary'
-                                            onClick={handleShow}
-                                        >
-                                            <BsChevronRight></BsChevronRight>
-                                        </Button>
-                                    </Link>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
         </div>
     );
 }

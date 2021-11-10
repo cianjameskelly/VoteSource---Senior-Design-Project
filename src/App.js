@@ -1,11 +1,14 @@
 import React from 'react'
 import Navbar from './components/Navbar';
+import { AuthProvider } from './contexts/AuthContext'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <Navbar />
+      </div>
+    </AuthProvider>
   )                                   
 }
 

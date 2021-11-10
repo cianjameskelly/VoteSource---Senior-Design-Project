@@ -24,7 +24,7 @@ function Grid(props) {
             <div className={classes.item}>{icon}</div>
             <Typography className={classes.item} variant="h5">{title}</Typography>
             <div className={classes.item}>
-            <Link to="/register">
+            <Link to="/signup">
                 <CustomBtn  txt={btnTitle}/>
             </Link>
             </div>

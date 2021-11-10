@@ -11,8 +11,9 @@ import { FaHome } from 'react-icons/fa'
 import { BsFillQuestionSquareFill } from 'react-icons/bs'
 import { NavDropdown } from 'react-bootstrap';
 import Login from './Login'
-import Register from './Register'
+import Register from './Signup'
 import PoliProfile from './PoliProfile'
+import Signup from './Signup';
 
 export default function NavbarElements() {
     return (
@@ -31,16 +32,7 @@ export default function NavbarElements() {
                                 <NavDropdown.Item><Link as={Link} to={'/queens'}>Queens</Link></NavDropdown.Item>
                                 <NavDropdown.Item><Link as={Link} to={'/bronx'}>Bronx</Link></NavDropdown.Item>
                             </NavDropdown>
-                            <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                            </NavDropdown>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/register'}> Register</ReactBootStrap.Nav.Link>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/login'}> Login</ReactBootStrap.Nav.Link>
+                            <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>                       
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
                 </ReactBootStrap.Container>
@@ -69,8 +61,8 @@ export default function NavbarElements() {
                 <Route path="/login">
                     <Login />
                 </Route>
-                <Route path="/register">
-                    <Register />
+                <Route path="/signup">
+                    <Signup />
                 </Route>
                 <Route path="/poliprofile">
                     <PoliProfile />
