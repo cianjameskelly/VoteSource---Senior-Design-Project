@@ -62,20 +62,6 @@ export default function Signup() {
                     <Card.Body>
                         <h2 className="text-center mb-4">Register as a Politician!</h2>
                         <h6>Input your information below to be displayed in the VoteSource Politician Database!</h6>
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group id="email">
-                                <Form.Label>Email</Form.Label>
-                                <Form.Control type="email" ref={emailRef} required />
-                            </Form.Group>
-                            <Form.Group id="password">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" ref={passwordRef} required />
-                            </Form.Group>
-                            <Form.Group id="password-confirm">
-                                <Form.Label>Password Confirmation</Form.Label>
-                                <Form.Control type="password" ref={passwordConfirmRef} required />
-                                </Form.Group>
-                        </Form>
                         <Form>
                             <Form.Group>
                                 <Form.Label>Full Name</Form.Label>
@@ -100,9 +86,7 @@ export default function Signup() {
                                 <Form.Control type="text" onChange={(e) => setImg(e.target.value)} required />
                             </Form.Group>
                         </Form>
-                        <Link to="/polis">
-                            <Button diabled={loading} type="submit" onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>Sign Up</Button>
-                        </Link>
+                        <Button diabled={loading} type="submit" onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>Register Data to Database</Button>                    
                     </Card.Body>
                 </Card>
             </div>

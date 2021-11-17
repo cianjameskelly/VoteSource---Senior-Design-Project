@@ -1,6 +1,7 @@
 import React from 'react'
 import * as ReactBootStrap from 'react-bootstrap'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from 'react-router-dom'
+import { useAuth } from "../contexts/AuthContext"
 import About from './About';
 import Home from './Home';
 import Polis from './Polis';
@@ -11,12 +12,36 @@ import { FaHome } from 'react-icons/fa'
 import { BsFillQuestionSquareFill } from 'react-icons/bs'
 import { NavDropdown } from 'react-bootstrap';
 import Login from './Login'
-import Register from './Signup'
 import PoliProfile from './PoliProfile'
 import Signup from './Signup';
 import RegSignup from './RegSignup';
+import Admin from './Admin';
+import Profile from './Profile';
+import PrivateRoute from './PrivateRoute';
 
 export default function NavbarElements() {
+    const { logout, currentUser } = useAuth()
+    const history = useHistory()
+
+    const handleLogoutClick = () => {
+        logout()
+        history.push('/home')
+    }
+
+    const authButton = () => {
+        if (currentUser === null) {
+            return (
+                <ReactBootStrap.ButtonGroup>
+                    <ReactBootStrap.Button variant="secondary" as={Link} to="/login">Login</ReactBootStrap.Button>
+                    <ReactBootStrap.Button variant="secondary" as={Link} to="/regsignup">Signup</ReactBootStrap.Button>
+                </ReactBootStrap.ButtonGroup>
+            )
+                
+        } else {
+            return <ReactBootStrap.Button variant="secondary" onClick={handleLogoutClick}>Logout</ReactBootStrap.Button>
+        }
+    }
+
     return (
         <Router>
         <div>
@@ -34,9 +59,14 @@ export default function NavbarElements() {
                                 <NavDropdown.Item><Link as={Link} to={'/bronx'}>Bronx</Link></NavDropdown.Item>
                             </NavDropdown>
                             <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/regsignup'}> Sign Up</ReactBootStrap.Nav.Link>       
+                            <ReactBootStrap.Nav> Logout</ReactBootStrap.Nav>
+                            <ReactBootStrap.Nav.Link as={Link} to={'/profile'}> Profile</ReactBootStrap.Nav.Link>
+                            <ReactBootStrap.Nav.Link as={Link} to={'/admin'}> Admin</ReactBootStrap.Nav.Link>
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
+                    <ReactBootStrap.Form inline className="mx-3">
+                        {authButton()}
+                    </ReactBootStrap.Form>
                 </ReactBootStrap.Container>
             </ReactBootStrap.Navbar>
         </div>
@@ -72,6 +102,12 @@ export default function NavbarElements() {
                 <Route path="/poliprofile">
                     <PoliProfile />
                 </Route>
+                <Route path="/admin">
+                    <Admin />
+                </Route>
+                <PrivateRoute exact path="/profile">
+                    <Profile />
+                </PrivateRoute>
             </Switch>
         </div>
         </Router>

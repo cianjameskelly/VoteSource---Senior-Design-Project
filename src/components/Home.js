@@ -5,8 +5,9 @@ import PersonIcon from '@material-ui/icons/Person';
 import {Typography} from '@material-ui/core'; 
 import Grid from './Grid'
 import { BsChevronRight } from 'react-icons/bs';
-import { Button } from 'react-bootstrap';
+import { Button, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import Iframe from 'react-iframe'
 
 const theme = createMuiTheme({
     palette: {
@@ -88,6 +89,24 @@ function Home() {
               </Button>
             </Link>
         </ThemeProvider>
+        <Row lg={2}>
+          <div style={{ left: '25%'
+          }}>
+            <h1>Nassau News</h1>
+            <Iframe url="https://www.newsday.com/long-island/nassau"
+              width="700px"
+              height="500px"
+            />
+          </div>
+          <div style={{ right: '25%'
+          }}>
+            <h1>Suffolk News</h1>
+            <Iframe url="https://www.suffolkcountynews.net/"
+              width="700px"
+              height="500px"
+            />
+          </div>
+        </Row>
         </div>
     );
 }
