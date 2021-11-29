@@ -88,26 +88,26 @@ function Home() {
                   <BsChevronRight></BsChevronRight>
               </Button>
             </Link>
-        </ThemeProvider>
-        <Row lg={2}>
-          <div style={{ left: '25%'
-          }}>
-            <h1>Nassau News</h1>
-            <Iframe url="https://www.newsday.com/long-island/nassau"
-              width="700px"
-              height="500px"
-            />
-          </div>
-          <div style={{ right: '25%'
-          }}>
-            <h1>Suffolk News</h1>
-            <Iframe url="https://www.suffolkcountynews.net/"
-              width="700px"
-              height="500px"
-            />
-          </div>
-        </Row>
+        </ThemeProvider >
+        <div style={{ display: 'flex',  justifyContent:'center' }}>
+          <Row lg={2}  className={classes.bigSpace}>
+            <div>
+              <h1>Nassau News</h1>
+              <Iframe url="https://www.newsday.com/search#filter=stories&query=nassau%20political%20news"
+                width="700px"
+                height="500px"
+              />
+            </div>
+            <div>
+              <h1>Suffolk News</h1>
+              <Iframe url="https://www.suffolkcountynews.net/"
+                width="700px"
+                height="500px"
+              />
+            </div>
+          </Row>
         </div>
+      </div>
     );
 }
 

@@ -56,16 +56,18 @@ function Polis() {
 
     return (
         <div className="Polis">
-            <h1>Nassau County Candidates</h1>
-            <input className="search-box" placeholder="Search" onInput={filterCards}/>
+            <div style={{ margin: '2rem' }}>
+                <h1>Nassau County Candidates</h1>
+                <input className="search-box" placeholder="Search" onInput={filterCards}/>
+            </div>
             <div min-width= {100}>
                 <Row xs={2} md={5} lg={8}>
                     {politicians.map((politician) => (
                         <Col>
                             <Card 
-                                style={{ width: '15rem' }}
+                                style={{ margin: '2rem 2rem 2rem 0', padding: '1.5rem', width: '15rem', height: '30rem' }}
                                 key={politician.id}
-                                >
+                            >
                                 <Card.Img src={politician.img} />
                                 <Card.Body>
                                     <Card.Title>{politician.name}</Card.Title>
