@@ -96,13 +96,15 @@ function Home() {
               <Iframe url="https://www.newsday.com/search#filter=stories&query=nassau%20political%20news"
                 width="700px"
                 height="500px"
+                className="box"
               />
             </div>
             <div>
               <h1>Suffolk News</h1>
-              <Iframe url="https://www.suffolkcountynews.net/"
+              <Iframe url="https://www.suffolkcountynews.net/politics/"
                 width="700px"
                 height="500px"
+                className="box"
               />
             </div>
           </Row>

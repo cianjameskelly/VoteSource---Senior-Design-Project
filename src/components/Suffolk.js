@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Form, FormLabel, Modal, Row } from 'react-bootstrap';
+import { Button, Card, Col, Row } from 'react-bootstrap';
 import app from '../firebase'
 import { BsChevronRight } from 'react-icons/bs'
-//import { FaRepublican, FaDemocrat } from 'react-icons/fa'
+import { Link } from "react-router-dom";
 
 function Suffolk() {
     const [suffolk, setPolis] = useState([]);
+    const [allPoliticians, setAllPolis] = useState([]);
     const [loading, setLoading] = useState(false);
 
     const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     const ref = app.firestore().collection("suffolk");
@@ -22,80 +22,57 @@ function Suffolk() {
                 items.push(doc.data());
             });
             setPolis(items);
+            setAllPolis(items);
             setLoading(false);
         });
     }
 
     useEffect(() => {
         getPolis();
+        setPolis();
+        setAllPolis();
     }, []);
 
     if (loading) {
         return <h1>Loading...</h1>;
     }
 
-/*
-    function party_icon() {
-        if (politician.party='Democrat') {
-          return <FaDemocrat />;
-        } else {
-        return <FaRepublican />;
-      }
+    const filterCards = event => {
+        const value = event.target.value.toLowerCase();
+        const filteredPolis = allPoliticians.filter(politician => (`${politician.name} ${politician.position} ${politician.party}`.toLowerCase().includes(value)));
+        setPolis(filteredPolis);
     }
-*/
+
     return (
-        <div min-width= {100}>
-            <h1>Suffolk County Candidates</h1>
-            <Card>
-                <Card.Title>
-                    <Form
-                        
-                    >
-                        <FormLabel>Search</FormLabel>
-                    </Form>
-                </Card.Title>
-            </Card>
-            <Row xs={2} md={5} lg={8}>
-                {suffolk.map((politician) => (
-                    <Col>
-                        <Card 
-                            style={{ width: '15rem' }}
-                            key={politician.id}
+        <div className="Suffolk">
+            <div style={{ margin: '2rem' }}>
+                <h1>Suffolk County Candidates</h1>
+                <input className="search-box" placeholder="Search" onInput={filterCards}/>
+            </div>
+            <div min-width= {100}>
+                <Row xs={1} md={5} lg={8}>
+                    {suffolk.map((politician) => (
+                        <Col>
+                            <Card 
+                                style={{ margin: '2rem 2rem 2rem 0', padding: '1.5rem', width: '15rem', height: '30rem' }}
+                                key={politician.id}
                             >
-                            <Card.Img src={politician.img} />
-                            <Card.Body>
-                                <Card.Title>{politician.name}</Card.Title>
-                                <Card.Text>
-                                    <h6>{politician.position}</h6>
-                                    <h6>{politician.party}</h6>
-                                    {/*<h6>{this.party_icon(politician.party)}</h6>*/}
-                                    <Button
-                                        variant='primary'
-                                        onClick={handleShow}
-                                    >
-                                        <BsChevronRight></BsChevronRight>
-                                    </Button>
-                                    <Modal show={show} onHide={handleClose}>
-                                        <Modal.Header>
-                                            <Modal.Title>{politician.name}</Modal.Title>
-                                        </Modal.Header>
-                                        <Modal.Body>
-                                            <h6>Position: {politician.position}</h6>
-                                            <h6>Party: {politician.party}</h6>
-                                            <p>Webscraping for politician information is supposed to occur here</p>
-                                        </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button variant="secondary" onClick={handleClose}>
-                                                Close
-                                            </Button>
-                                        </Modal.Footer>
-                                    </Modal>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    </Col>
-                ))}
-            </Row>
+                                <Card.Img src={politician.img} />
+                                <Card.Body>
+                                    <Card.Title>{politician.name}</Card.Title>
+                                    <Card.Text>
+                                        <h6>{politician.position}</h6>
+                                        <h6>{politician.party}</h6>
+                                        <a href={politician.site1} rel="noreferrer">
+                                            More Info
+                                        </a>
+                                    </Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    ))}
+                </Row>
+            </div>
         </div>
     );
 }

@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom"
 import app from '../firebase'
 import { v4 as uuidv4 } from 'uuid';
 
-export default function Signup() {    
+export default function SignupSuffolk() {    
     const emailRef = useRef()
     const passwordRef = useRef()
     const passwordConfirmRef = useRef()
@@ -19,7 +19,7 @@ export default function Signup() {
     const [position, setPosition] = useState("");
     const [img, setImg] = useState("")
 
-    const ref = app.firestore().collection("politicians");
+    const ref = app.firestore().collection("suffolk");
 
     function addPoli(newPoli) {
         ref
@@ -41,7 +41,7 @@ export default function Signup() {
             <div className="w-50" style={{ maxWidth: "400px" }}>
                 <Card>
                     <Card.Body>
-                        <h2 className="text-center mb-4">Nassau Politician Registration</h2>
+                        <h2 className="text-center mb-4">Suffolk Politician Registration</h2>
                         <h6>Input your information below to be displayed in the VoteSource Politician Database!</h6>
                         <Form>
                             <Form.Group>

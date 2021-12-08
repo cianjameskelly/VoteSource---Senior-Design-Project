@@ -9,7 +9,7 @@ import Suffolk from './Suffolk';
 import Queens from './Queens';
 import Bronx from './Bronx';
 import { FaHome } from 'react-icons/fa'
-import { BsFillQuestionSquareFill } from 'react-icons/bs'
+import { BsFillQuestionSquareFill, BsPersonLinesFill } from 'react-icons/bs'
 import { MdAdminPanelSettings } from 'react-icons/md'
 import { NavDropdown } from 'react-bootstrap';
 import Login from './Login'
@@ -19,6 +19,8 @@ import RegSignup from './RegSignup';
 import Admin from './Admin';
 import Profile from './Profile';
 import PrivateRoute from './PrivateRoute';
+import PoliLanding from './PoliLanding';
+import SignupSuffolk from './SignupSuffolk';
 
 export default function NavbarElements() {
     const { logout, currentUser } = useAuth()
@@ -33,7 +35,7 @@ export default function NavbarElements() {
         if (currentUser === null) {
             return (
                 <ReactBootStrap.ButtonGroup>
-                    <ReactBootStrap.Button variant="secondary" as={Link} to="/login">Login</ReactBootStrap.Button>
+                    <ReactBootStrap.Button variant="secondary" as={Link} to="/login">User Login</ReactBootStrap.Button>
                     <ReactBootStrap.Button variant="secondary" as={Link} to="/regsignup">Signup</ReactBootStrap.Button>
                 </ReactBootStrap.ButtonGroup>
             )
@@ -61,11 +63,10 @@ export default function NavbarElements() {
                             <NavDropdown title="Candidates" background-color="dark">
                                 <NavDropdown.Item><Link as={Link} to={'/polis'}>Nassau</Link></NavDropdown.Item>
                                 <NavDropdown.Item><Link as={Link} to={'/suffolk'}>Suffolk</Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link as={Link} to={'/queens'}>Queens</Link></NavDropdown.Item>
-                                <NavDropdown.Item><Link as={Link} to={'/bronx'}>Bronx</Link></NavDropdown.Item>
                             </NavDropdown>
                             <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>
                             <ReactBootStrap.Nav.Link as={Link} to={'/admin'}><MdAdminPanelSettings></MdAdminPanelSettings> Admin</ReactBootStrap.Nav.Link>
+                            <ReactBootStrap.Nav.Link as={Link} to={'/polilanding'}><BsPersonLinesFill></BsPersonLinesFill> Politician Register</ReactBootStrap.Nav.Link>
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
                     <ReactBootStrap.Form inline className="mx-3">
@@ -100,6 +101,9 @@ export default function NavbarElements() {
                 <Route path="/signup">
                     <Signup />
                 </Route>
+                <Route path="/signupsuffolk">
+                    <SignupSuffolk />
+                </Route>
                 <Route path="/regsignup">
                     <RegSignup />
                 </Route>
@@ -108,6 +112,9 @@ export default function NavbarElements() {
                 </Route>
                 <Route path="/admin">
                     <Admin />
+                </Route>
+                <Route path="/polilanding">
+                    <PoliLanding />
                 </Route>
                 <PrivateRoute exact path="/profile">
                     <Profile />

@@ -27,6 +27,11 @@
   .Home-link {
     color: #61dafb;
   }
+
+  .box {
+    border: 30px solid gray;
+    border-radius: 10px;
+  }
   
   @keyframes Home-logo-spin {
     from {
