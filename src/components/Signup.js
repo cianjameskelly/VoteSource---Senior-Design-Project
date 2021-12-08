@@ -4,6 +4,7 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import app from '../firebase'
 import { v4 as uuidv4 } from 'uuid';
+import nassau from './images/nassau.png'
 
 export default function Signup() {    
     const emailRef = useRef()

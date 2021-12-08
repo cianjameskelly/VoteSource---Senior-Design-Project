@@ -3,6 +3,7 @@ import { Button, Card, Col,Row } from 'react-bootstrap';
 import app from '../firebase'
 import { BsChevronRight } from 'react-icons/bs'
 import { Link } from "react-router-dom";
+import nassau from './images/nassau.png'
 
 function Polis() {
     const [politicians, setPolis] = useState([]);
@@ -45,11 +46,11 @@ function Polis() {
 
     return (
         <div className="Polis">
-            <div style={{ margin: '2rem' }}>
+            <div style={{ margin: '2rem',  }}>
                 <h1>Nassau County Candidates</h1>
                 <input className="search-box" placeholder="Search" onInput={filterCards}/>
             </div>
-            <div min-width= {100}>
+            <div min-width= {100} >
                 <Row xs={1} md={5} lg={8}>
                     {politicians.map((politician) => (
                         <Col>

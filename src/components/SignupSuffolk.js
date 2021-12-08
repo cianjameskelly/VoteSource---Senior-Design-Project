@@ -67,7 +67,7 @@ export default function SignupSuffolk() {
                                 <Form.Control type="text" onChange={(e) => setImg(e.target.value)} required />
                             </Form.Group>
                         </Form>
-                        <Link to="/polis"><Button diabled={loading} type="submit" onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>Register Data to Database</Button></Link>                  
+                        <Link to="/suffolk"><Button diabled={loading} type="submit" onClick={() => addPoli({ name, party, position, img, id: uuidv4() })}>Register Data to Database</Button></Link>                  
                     </Card.Body>
                 </Card>
             </div>

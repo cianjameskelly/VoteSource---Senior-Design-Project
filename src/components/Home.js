@@ -78,10 +78,20 @@ function Home() {
                 voters using the application to be informed about you!
             </Typography>
             <Typography variant="h4" className={classes.bigSpace} color="primary">
-                Register as politician below!
+                Register as a standard user now!
+            </Typography>
+            <Link to='./regsignup'>
+              <Button
+                variant='primary'
+              >
+                  <BsChevronRight></BsChevronRight>
+              </Button>
+            </Link>
+            <Typography variant="h4" className={classes.bigSpace} color="primary">
+                Or register politician information!
             </Typography>
             </div>
-            <Link to='./signup'>
+            <Link to='./polilanding'>
               <Button
                 variant='primary'
               >

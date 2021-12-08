@@ -40,6 +40,14 @@ export default function NavbarElements() {
                 </ReactBootStrap.ButtonGroup>
             )
                 
+        } if (currentUser.email === "cianjameskelly@gmail.com") {
+            return (
+                <ReactBootStrap.ButtonGroup>
+                    <ReactBootStrap.Button variant="secondary" as={Link} to="/admin">Admin Tools</ReactBootStrap.Button>
+                    <ReactBootStrap.Button variant="secondary" onClick={handleLogoutClick}>Logout</ReactBootStrap.Button>
+                    <ReactBootStrap.Button variant="secondary" as={Link} to="/profile">Profile</ReactBootStrap.Button>
+                </ReactBootStrap.ButtonGroup>
+            )
         } else {
             return (
                 <ReactBootStrap.ButtonGroup>
@@ -65,7 +73,6 @@ export default function NavbarElements() {
                                 <NavDropdown.Item><Link as={Link} to={'/suffolk'}>Suffolk</Link></NavDropdown.Item>
                             </NavDropdown>
                             <ReactBootStrap.Nav.Link as={Link} to={'/about'}><BsFillQuestionSquareFill></BsFillQuestionSquareFill> About</ReactBootStrap.Nav.Link>
-                            <ReactBootStrap.Nav.Link as={Link} to={'/admin'}><MdAdminPanelSettings></MdAdminPanelSettings> Admin</ReactBootStrap.Nav.Link>
                             <ReactBootStrap.Nav.Link as={Link} to={'/polilanding'}><BsPersonLinesFill></BsPersonLinesFill> Politician Register</ReactBootStrap.Nav.Link>
                         </ReactBootStrap.Nav>
                     </ReactBootStrap.Navbar.Collapse>
