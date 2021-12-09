@@ -1,6 +1,5 @@
 import React from 'react'
-import { Button, Row } from 'react-bootstrap';
-import { BsChevronRight } from 'react-icons/bs';
+import { Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import {Typography} from '@material-ui/core';
 import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';

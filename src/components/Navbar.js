@@ -10,7 +10,6 @@ import Queens from './Queens';
 import Bronx from './Bronx';
 import { FaHome } from 'react-icons/fa'
 import { BsFillQuestionSquareFill, BsPersonLinesFill } from 'react-icons/bs'
-import { MdAdminPanelSettings } from 'react-icons/md'
 import { NavDropdown } from 'react-bootstrap';
 import Login from './Login'
 import PoliProfile from './PoliProfile'

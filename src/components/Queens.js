@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card, Col, Form, FormLabel, Modal, Row } from 'react-bootstrap';
 import app from '../firebase'
 import { BsChevronRight } from 'react-icons/bs'
-//import { FaRepublican, FaDemocrat } from 'react-icons/fa'
 
 function Queens() {
     const [queens, setPolis] = useState([]);

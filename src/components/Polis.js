@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Col,Row } from 'react-bootstrap';
+import { Card, Col,Row } from 'react-bootstrap';
 import app from '../firebase'
-import { BsChevronRight } from 'react-icons/bs'
-import { Link } from "react-router-dom";
-import nassau from './images/nassau.png'
+import {FaTwitter} from 'react-icons/fa'
 
 function Polis() {
     const [politicians, setPolis] = useState([]);
@@ -51,11 +49,11 @@ function Polis() {
                 <input className="search-box" placeholder="Search" onInput={filterCards}/>
             </div>
             <div min-width= {100} >
-                <Row xs={1} md={5} lg={8}>
+                <Row xs={1} md={6} lg={8}>
                     {politicians.map((politician) => (
                         <Col>
                             <Card 
-                                style={{ margin: '2rem 2rem 2rem 0', padding: '1.5rem', width: '15rem', height: '30rem' }}
+                                style={{ margin: '2rem 2rem 2rem 0', padding: '1.2rem', width: '15rem', height: '32rem' }}
                                 key={politician.id}
                             >
                                 <Card.Img src={politician.img} />
@@ -64,10 +62,9 @@ function Polis() {
                                     <Card.Text>
                                         <h6>{politician.position}</h6>
                                         <h6>{politician.party}</h6>
-                                        <a href={politician.site1} rel="noreferrer">
-                                            More Info
-                                        </a>
-                                        
+                                        <a href={politician.site1} rel="noreferrer">More Info</a>
+                                        <h6></h6>
+                                        <a href={politician.twi} rel="noreferrer" label="Twitter"><FaTwitter value={{ color: "#1DA1F2" }}></FaTwitter></a>
                                     </Card.Text>
                                 </Card.Body>
                             </Card>

@@ -1,9 +1,7 @@
 import React from 'react'
 import { createMuiTheme, ThemeProvider, makeStyles } from '@material-ui/core/styles';
 import './Home.css'
-import PersonIcon from '@material-ui/icons/Person';
-import {Typography} from '@material-ui/core'; 
-import Grid from './Grid'
+import {Typography} from '@material-ui/core';
 import { BsChevronRight } from 'react-icons/bs';
 import { Button, Row } from 'react-bootstrap';
 import { Link } from "react-router-dom";
@@ -65,11 +63,11 @@ function Home() {
             </Typography>
             <Typography variant="h5" className={classes.littleSpace} color="primary">
                 VoteSource is a web application that acts a user friendly resource
-                which allocates politician data in a users local area (Nassau County to start),
+                which allocates politician data in a users county,
                 with a goal of informing users about their local politicians before they head to 
                 the polls on election day.
             </Typography>
-            <Typography variant="h4" className={classes.bigSpace} color="primary">
+            <Typography variant="h4" className={classes.littleSpace} color="primary">
                 Politcians can use it too!
             </Typography>
             <Typography variant="h5" className={classes.littleSpace} color="primary">
@@ -77,7 +75,7 @@ function Home() {
                 can also act as a platform for you to get your name out there in order for 
                 voters using the application to be informed about you!
             </Typography>
-            <Typography variant="h4" className={classes.bigSpace} color="primary">
+            <Typography variant="h4" className={classes.littleSpace} color="primary">
                 Register as a standard user now!
             </Typography>
             <Link to='./regsignup'>
@@ -87,7 +85,7 @@ function Home() {
                   <BsChevronRight></BsChevronRight>
               </Button>
             </Link>
-            <Typography variant="h4" className={classes.bigSpace} color="primary">
+            <Typography variant="h4" className={classes.littleSpace} color="primary">
                 Or register politician information!
             </Typography>
             </div>

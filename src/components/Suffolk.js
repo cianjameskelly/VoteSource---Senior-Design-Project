@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
 import app from '../firebase'
-import { BsChevronRight } from 'react-icons/bs'
-import { Link } from "react-router-dom";
 
 function Suffolk() {
     const [suffolk, setPolis] = useState([]);
